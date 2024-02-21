@@ -77,7 +77,10 @@ class Ui_LCOE(QDialog):
             self.discount_cash = [self.income_after_costs[i]/(1+discount)**(i+1) for i in range(project_lifetime)]
             for i in range(project_lifetime):
                 display += f"after year {i+1}:\t remaining power: {round(self.remaining_power[i],3)}\t energy production: {round(self.energy_production[i],0)}\t revenue: {round(self.revenueFIT[i],2)}\t insurance: {round(self.insurance[i],2)}\t maintenance: {round(self.maintenance[i],2)}\t earnings: {round(self.earnings[i],2)}\t income cumul: {round(self.income_cumul[i],2)}\t income with LCOE: {round(self.income_LCOE[i],2)} \t income after costs: {round(self.income_after_costs[i],2)}\t discounted cash: {round(self.discount_cash[i],2)} \n"
+            self.present_value = sum(self.discount_cash)
+            display += f"Present Value: {round(self.present_value,2)}"
             self.display.setText(display)
+            
 app = QtWidgets.QApplication(sys.argv)
 window = Ui_LCOE()
 window.show()
