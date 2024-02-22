@@ -486,7 +486,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>Nominal Power</string>
+                  <string>Nominal Power (kWp)</string>
                  </property>
                 </widget>
                </item>
@@ -498,7 +498,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>Present Value of Net Income</string>
+                  <string>Present Value of Net Income (€)</string>
                  </property>
                 </widget>
                </item>
@@ -510,7 +510,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>Levelised Costs of Electricity</string>
+                  <string>Levelised Costs of Electricity (€/kWh)</string>
                  </property>
                 </widget>
                </item>
@@ -522,7 +522,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>Return of Investment</string>
+                  <string>Return of Investment (%)</string>
                  </property>
                 </widget>
                </item>
@@ -534,7 +534,7 @@
                   </font>
                  </property>
                  <property name="text">
-                  <string>NPV</string>
+                  <string>NPV (€)</string>
                  </property>
                 </widget>
                </item>
@@ -683,7 +683,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton_Calculate_KPIs">
+    <widget class="QPushButton" name="pushButton_calculate_KPIs">
      <property name="font">
       <font>
        <pointsize>16</pointsize>
@@ -706,6 +706,18 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_clear_inputs">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Clear Inputs</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
