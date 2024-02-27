@@ -3,6 +3,7 @@ import numpy_financial as npf
 from PyQt6 import QtWidgets, QtCore, uic
 from PyQt6.QtWidgets import QDialog
 from PyQt6.QtGui import QIntValidator, QDoubleValidator
+import datetime
 
 # Needed for Wayland applications LINUX ONLY
 os.environ["QT_QPA_PLATFORM"] = "xcb"
@@ -107,7 +108,7 @@ class Ui_LCOE(QDialog):
             if(discount==0.0):
                  self.PVNI = sum(self.earnings)
             else:
-                self.PVNI = self.XNPV(discount, [0] + self.earnings)
+                self.PVNI = self.XNPV(discount, self.earnings)
                 
             self.output_PVNI.setText(str(round(self.PVNI,2)))
 
@@ -128,7 +129,9 @@ class Ui_LCOE(QDialog):
             self.display.setText(display)
 
     def XNPV(self, rate, cashflow):
-        return sum([cashflow[i]/(1+rate)**(i) for i in range(len(cashflow))])            
+        start_date = datetime.date(datetime.date.today().year-1, 1, 1)
+        days = [(datetime.date(datetime.date.today().year+i, 1, 1)-start_date)/datetime.timedelta(days=1) for i in range(len(cashflow))]
+        return sum([cashflow[i]/(1+rate)**(days[i]/(365)) for i in range(len(cashflow))])            
 
     def create_cashflow_output(self, project_lifetime):
         display_cash_output = ''
